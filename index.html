@@ -2,81 +2,210 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap Pro Project</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; }
-        .navbar { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .hero-section { padding: 100px 0; background: radial-gradient(circle at top right, #1e1b4b, #0f172a); }
-        .card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.1); color: white; transition: 0.3s; }
-        .card:hover { transform: translateY(-10px); border-color: #6366f1; }
-        .btn-primary { background-color: #6366f1; border: none; }
-        .gradient-text { background: linear-gradient(90deg, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Admin Pro Studio | Dual-Monitor Dev Workstation</title>
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">TECH<span class="text-primary">NOVA</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-primary btn-sm text-white ms-lg-3 px-3" href="#">Get Started</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<div class="workstation">
+  
+    <div class="monitor primary-monitor">
+        <div class="screen">
+            <div class="design-tool">
+          
+                <div class="preview-row">
+              
+                    <div class="dashboard-preview" id="dashboardPreviewArea">
+                 
+                        <nav class="navbar navbar-expand-lg admin-navbar mb-3">
+                            <div class="container-fluid">
+                                <a class="navbar-brand text-white fw-bold" href="#"><i class="fas fa-crown me-2 text-primary"></i>Admin Pro</a>
+                                <div class="ms-auto d-flex gap-3">
+                                    <i class="fas fa-bell text-secondary"></i>
+                                    <i class="fas fa-user-circle text-secondary"></i>
+                                </div>
+                            </div>
+                        </nav>
+             
 
-    <header class="hero-section text-center">
-        <div class="container">
-            <h1 class="display-3 fw-bold mb-4">Build Faster with <br><span class="gradient-text">Bootstrap 5</span></h1>
-            <p class="lead text-secondary mb-5">সিম্পল এবং পাওয়ারফুল গ্রিড সিস্টেম ব্যবহার করে তৈরি করুন আপনার নেক্সট ওয়েবসাইট।</p>
-            <div class="d-flex justify-content-center gap-3">
-                <button class="btn btn-primary btn-lg px-4">Launch Project</button>
-                <button class="btn btn-outline-light btn-lg px-4">View Demo</button>
-            </div>
-        </div>
-    </header>
+                        <div class="mb-3">
+                            <canvas id="revenueChart" style="height: 170px; width: 100%;"></canvas>
+                        </div>
+                
 
-    <section id="features" class="py-5">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card h-100 p-4">
-                        <div class="mb-3 fs-1">⚡</div>
-                        <h3>Fast Performance</h3>
-                        <p class="text-secondary">বুটস্ট্র্যাপের অপ্টিমাইজড ক্লাসের মাধ্যমে ওয়েবসাইট হবে সুপার ফাস্ট।</p>
+                        <div class="table-responsive">
+                            <table class="table data-table table-dark table-borderless align-middle">
+                                <thead>
+                                    <tr><th>User</th><th>Role</th><th>Status</th></tr>
+                                </thead>
+                                <tbody id="dynamicTableBody">
+                                    <tr><td><div class="d-flex align-items-center gap-2"><div class="avatar-circle" style="background: #4e73df;"><i class="fas fa-user text-white small"></i></div> Emma Carter</div></td><td>Admin</td><td><span class="badge bg-success">Active</span></td></tr>
+                                    <tr><td><div class="d-flex align-items-center gap-2"><div class="avatar-circle" style="background: #1cc88a;"><i class="fas fa-code text-white small"></i></div> Liam O'Connor</div></td><td>Developer</td><td><span class="badge bg-warning">Busy</span></td></tr>
+                                    <tr><td><div class="d-flex align-items-center gap-2"><div class="avatar-circle" style="background: #e74a3b;"><i class="fas fa-chart-line text-white small"></i></div> Sophia Wu</div></td><td>Analyst</td><td><span class="badge bg-info">Review</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+           
+
+
+
+
+
+
+
+
+                        <div class="row mt-2" id="gridCardsContainer">
+                            <div class="col-md-4 mb-2"><div class="stat-card p-2 text-center text-white"><i class="fas fa-dollar-sign text-primary"></i> <span class="fw-bold">$24.5k</span><br><small>Revenue</small></div></div>
+                            <div class="col-md-4 mb-2"><div class="stat-card p-2 text-center text-white"><i class="fas fa-users text-primary"></i> <span class="fw-bold">1,482</span><br><small>Users</small></div></div>
+                            <div class="col-md-4 mb-2"><div class="stat-card p-2 text-center text-white"><i class="fas fa-chart-simple text-primary"></i> <span class="fw-bold">+32%</span><br><small>Growth</small></div></div>
+                        </div>
+                    </div>
+
+                    <div class="theme-sidebar">
+                        <h6 class="text-white fw-semibold mb-3"><i class="fas fa-palette me-2 text-primary"></i>Theme & Layout Editor</h6>
+         
+
+
+                        <div class="color-group hand-hover-area" id="primaryColorGroup">
+                            <div class="d-flex justify-content-between align-items-center"><span class="text-light small">Primary Color</span><span class="hex-badge text-white" id="primaryHexValue">#4e73df</span></div>
+                            <div class="d-flex gap-2 mt-1"><input type="color" id="primaryColorPicker" class="form-control form-control-color w-50" value="#4e73df"><input type="range" id="primaryBrightness" class="form-range slider-lightness w-50" min="0" max="100" value="50" step="1"></div>
+                       
+
+
+
+
+                            <div class="hover-hand-icon"><i class="fas fa-hand-peace fa-flip-horizontal"></i> 🖱️</div>
+                        </div>
+                        <div class="color-group">
+                            <div class="d-flex justify-content-between"><span class="text-light small">Secondary Color</span><span class="hex-badge text-white" id="secondaryHexValue">#1cc88a</span></div>
+                            <div class="d-flex gap-2 mt-1"><input type="color" id="secondaryColorPicker" class="form-control form-control-color w-50" value="#1cc88a"><input type="range" id="secondaryBrightness" class="form-range slider-lightness w-50" min="0" max="100" value="50"></div>
+                        </div>
+                        <div class="color-group">
+                            <div class="d-flex justify-content-between"><span class="text-light small">Text Color</span><span class="hex-badge text-white" id="textColorHexValue">#e2e8f0</span></div>
+                            <div class="d-flex gap-2 mt-1"><input type="color" id="textColorPicker" class="form-control form-control-color w-50" value="#e2e8f0"><input type="range" id="textBrightness" class="form-range slider-lightness w-50" min="0" max="100" value="60"></div>
+                        </div>
+              
+
+
+                        <div class="mt-3 mb-3">
+                            <label class="text-light small"><i class="fas fa-font me-1"></i>Typography</label>
+                            <select id="googleFontSelect" class="form-select form-select-sm bg-dark text-white border-secondary">
+                                <option value="Inter">Inter (Default)</option>
+                                <option value="Poppins">Poppins</option>
+                                <option value="Roboto">Roboto</option>
+                                <option value="JetBrains Mono">JetBrains Mono</option>
+                            </select>
+                        </div>
+                      
+
+
+
+
+
+
+                        <div class="mb-3">
+                            <label class="text-light small"><i class="fas fa-table-columns me-1"></i>Grid Layout Modifiers</label>
+                            <div class="d-flex gap-2 mt-1">
+                                <button class="grid-toggle-btn btn-sm text-white" data-cols="2">2 Cols</button>
+                                <button class="grid-toggle-btn btn-sm text-white" data-cols="3">3 Cols</button>
+                                <button class="grid-toggle-btn btn-sm text-white" data-cols="4">4 Cols</button>
+                            </div>
+                        </div>
+                      
+
+
+
+
+
+                        <div class="feature-checklist mt-3">
+                            <p class="text-light small fw-semibold"><i class="fas fa-rocket me-1"></i>Advanced Features</p>
+                            <div><i class="fas fa-check-circle text-success me-2"></i> Real-time Data Fetching</div>
+                            <div><i class="fas fa-check-circle text-success me-2"></i> Advanced Drag-and-Drop Form Builder</div>
+                            <div><i class="fas fa-check-circle text-success me-2"></i> E-commerce Module</div>
+                            <div><i class="fas fa-check-circle text-success me-2"></i> AI Analytics Insights</div>
+                            <div><i class="fas fa-check-circle text-success me-2"></i> Full Responsiveness Controls</div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card h-100 p-4">
-                        <div class="mb-3 fs-1">📱</div>
-                        <h3>Fully Responsive</h3>
-                        <p class="text-secondary">মোবাইল, ট্যাবলেট বা পিসি—সব ডিভাইসেই আপনার সাইট দেখাবে নিখুঁত।</p>
+
+               
+
+
+
+
+
+
+                <div class="terminal-split">
+                    <div class="terminal-left">
+                        <div class="d-flex text-light small mb-1"><i class="fas fa-code me-1 text-primary"></i> Bootstrap Class Manipulation (Live CSS)</div>
+                        <textarea id="classEditor" rows="4" class="code-editor p-2 rounded">/* Dynamic Theme Overrides */
+.btn-primary { background: #4e73df; border-color: #4e73df; }
+.bg-primary { background: #4e73df !important; }
+.text-primary { color: #4e73df !important; }
+[data-theme] { --bs-primary: #4e73df; }</textarea>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 p-4">
-                        <div class="mb-3 fs-1">🛠️</div>
-                        <h3>Easy to Customize</h3>
-                        <p class="text-secondary">খুব সহজেই নিজের মতো করে থিম কালার এবং কম্পোনেন্ট চেঞ্জ করা যায়।</p>
+                    <div class="terminal-right">
+                        <div class="text-light small mb-1"><i class="fas fa-terminal me-1 text-success"></i> Console Output</div>
+                        <div id="consoleOutput" class="console-line text-success" style="font-size:0.7rem;">> Applied primary color: #4e73df</div>
+                        <div id="secondaryConsole" class="console-line text-info" style="font-size:0.7rem;">> Secondary ready</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <footer class="py-4 border-top border-secondary text-center">
-        <p class="text-secondary mb-0">&copy; 2026 Technova. All rights reserved by Rubayed.</p>
-    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+    <div class="monitor secondary-monitor">
+        <div class="screen" style="background: #1e1e2e;">
+            <div class="vscode-window">
+                <div class="vscode-header">
+                    <div class="vscode-dot"></div><div class="vscode-dot"></div><div class="vscode-dot"></div>
+                    <span class="text-white-50 ms-2" style="font-size: 0.7rem;">index.html - Admin Pro</span>
+                </div>
+
+                
+                <div class="code-content">
+                    <span style="color:#569cd6;">&lt;!DOCTYPE html&gt;</span>
+                    <span style="color:#d4d4d4;">&lt;html&gt;</span>
+                    <span style="color:#d4d4d4;">&lt;head&gt;</span>
+                    <span style="color:#9cdcfe;">    &lt;link</span> <span style="color:#ce9178;">href</span>=<span style="color:#ce9178;">"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/css/bootstrap.min.css"</span><span style="color:#9cdcfe;">&gt;</span>
+                    <span style="color:#9cdcfe;">    &lt;link</span> <span style="color:#ce9178;">rel</span>=<span style="color:#ce9178;">"stylesheet"</span> <span style="color:#ce9178;">href</span>=<span style="color:#ce9178;">"custom.css"</span><span style="color:#9cdcfe;">&gt;</span>
+                    <span style="color:#d4d4d4;">&lt;/head&gt;</span>
+                    <span style="color:#d4d4d4;">&lt;body&gt;</span>
+                    <span style="color:#6a9955;">    &lt;!-- Bootstrap 5 Navbar + Dashboard Grid --&gt;</span>
+                    <span style="color:#d4d4d4;">    &lt;div class="container"&gt;</span>
+                    <span style="color:#d4d4d4;">        &lt;nav class="navbar navbar-dark bg-primary"&gt;...&lt;/nav&gt;</span>
+                    <span style="color:#d4d4d4;">        &lt;div class="row"&gt;&lt;div class="col-md-4"&gt;Card&lt;/div&gt;...&lt;/div&gt;</span>
+                    <span style="color:#d4d4d4;">    &lt;/div&gt;</span>
+                    <span style="color:#d4d4d4;">    &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</span>
+                    <span style="color:#d4d4d4;">&lt;/body&gt;</span>
+                    <span style="color:#d4d4d4;">&lt;/html&gt;</span>
+                    <div class="mt-2 text-info small"><i class="fas fa-check-circle"></i> Bootstrap 5 CDN active · structured layout ready</div>
+                </div>
+            </div>
+         
+
+
+
+
+
+
+            <div class="text-center mt-3 opacity-50"><i class="fas fa-laptop-code text-secondary"></i> <span class="text-secondary" style="font-size:10px;">VS Code · Focused Workflow</span></div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="script.js">
+</script>
 </body>
 </html>
