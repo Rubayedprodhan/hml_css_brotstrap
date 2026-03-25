@@ -198,8 +198,10 @@ body { color: ${currentText}; }`;
 
 
 
+
     updatePrimaryFromPickerAndSlider();
     updateSecondary();
+    
     updateTextColor();
     setGoogleFont('Inter');
     addConsoleLog('Admin Pro Studio ready · Theme engine live');
